@@ -16,11 +16,11 @@ namespaces = dict()
 
 for app in settings.INSTALLED_APPS:
     try:
-        live = import_module('%s.live' % app, 'live')
+        sockets = import_module('%s.sockets' % app, 'sockets')
     except ImportError:
         pass
     else:
-        Namespace = live.Namespace
+        Namespace = sockets.Namespace
         if hasattr(Namespace, 'name'):
             name = Namespace.name
         else:
